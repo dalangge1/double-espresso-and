@@ -1,6 +1,6 @@
 package com.google.android.apps.common.testing.ui.espresso.contrib.tester;
 
-import android.app.Activity;
+import android.support.v7.app.ActionBarActivity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 /**
  * Activity to demonstrate actions on a {@link DrawerLayout}.
  */
-public class DrawerActivity extends Activity {
+public class DrawerActivity extends ActionBarActivity {
 
   public static final String[] DRAWER_CONTENTS =
       new String[] {"Platypus", "Wombat", "Pickle", "Badger"};
@@ -49,8 +49,8 @@ public class DrawerActivity extends Activity {
     // enable ActionBar app icon to behave as action to toggle nav drawer
     // TODO(user): use compat lib for lower API levels
     if (android.os.Build.VERSION.SDK_INT >= 11) {
-      getActionBar().setDisplayHomeAsUpEnabled(true);
-      getActionBar().setHomeButtonEnabled(true);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     title = getTitle();
@@ -65,14 +65,14 @@ public class DrawerActivity extends Activity {
         /** Called when a drawer has settled in a completely closed state. */
         public void onDrawerClosed(View view) {
           if (android.os.Build.VERSION.SDK_INT >= 11) {
-            getActionBar().setTitle(title);
+            getSupportActionBar().setTitle(title);
           }
         }
 
         /** Called when a drawer has settled in a completely open state. */
         public void onDrawerOpened(View drawerView) {
           if (android.os.Build.VERSION.SDK_INT >= 11) {
-            getActionBar().setTitle(title);
+            getSupportActionBar().setTitle(title);
           }
         }
     };
@@ -83,7 +83,7 @@ public class DrawerActivity extends Activity {
   public void setTitle(CharSequence title) {
     this.title = title;
     if (android.os.Build.VERSION.SDK_INT >= 11) {
-      getActionBar().setTitle(title);
+      getSupportActionBar().setTitle(title);
     }
   }
 
